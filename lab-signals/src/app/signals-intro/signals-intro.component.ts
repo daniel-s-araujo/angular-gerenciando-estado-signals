@@ -26,4 +26,6 @@ export class SignalsIntroComponent {
   selecionarElemento(elemento: Elemento) {
     this.elementoSelecionado.set(elemento);
   }
+
+  elementoInfo() {}
 }
