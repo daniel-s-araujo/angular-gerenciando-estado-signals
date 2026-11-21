@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 
 interface Elemento {
   nome: string;
@@ -27,5 +27,10 @@ export class SignalsIntroComponent {
     this.elementoSelecionado.set(elemento);
   }
 
-  elementoInfo() {}
+  elementoInfo = computed(() => {
+    const elemento = this.elementoSelecionado();
+    return elemento
+      ? `Nome: ${elemento.nome}, Símbolo: ${elemento.simbolo}, Número de massa: ${elemento.numeroMassa}`
+      : `Nenhum elemento selecionado`;
+  });
 }
