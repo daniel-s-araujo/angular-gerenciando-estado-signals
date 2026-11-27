@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 
 interface Elemento {
   nome: string;
@@ -64,4 +64,33 @@ export class EffectsComponent {
       pontoEbulicao: -34,
     },
   ];
+
+  constructor() {
+    effect(
+      () => {
+        const elemento = this.elementoSelecionado();
+        const temp = this.temperatura();
+
+        if (elemento) {
+          let estadoFisico = '';
+
+          if (temp < elemento.pontoFusao) {
+            estadoFisico = 'Sólido';
+          } else if (
+            temp >= elemento.pontoFusao &&
+            temp < elemento.pontoEbulicao
+          ) {
+            estadoFisico = 'Líquido';
+          } else {
+            estadoFisico = 'Gasoso';
+          }
+
+          this.estadoFisico.set(estadoFisico);
+        }
+      },
+      {
+        allowSignalWrites: true,
+      },
+    );
+  }
 }
