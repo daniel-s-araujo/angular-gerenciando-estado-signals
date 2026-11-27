@@ -10,10 +10,8 @@ interface Elemento {
 
 @Component({
   selector: 'app-effects',
-  standalone: true,
-  imports: [],
   templateUrl: './effects.component.html',
-  styleUrl: './effects.component.css',
+  styleUrls: ['./effects.component.css'],
 })
 export class EffectsComponent {
   elementoSelecionado = signal<Elemento | null>(null);
@@ -94,7 +92,11 @@ export class EffectsComponent {
     );
   }
 
-  selecionarElemento(value: any) {}
+  selecionarElemento(elemento: Elemento) {
+    this.elementoSelecionado.set(elemento);
+  }
 
-  ajustarTemperatura(value: any) {}
+  ajustarTemperatura(novaTemperatura: number) {
+    this.temperatura.set(novaTemperatura);
+  }
 }
