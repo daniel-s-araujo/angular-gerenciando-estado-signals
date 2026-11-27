@@ -93,4 +93,8 @@ export class EffectsComponent {
       },
     );
   }
+
+  selecionarElemento(value: any) {}
+
+  ajustarTemperatura(value: any) {}
 }
