@@ -3,10 +3,8 @@ import { Elemento, ElementoService } from '../elemento.service';
 
 @Component({
   selector: 'app-element-list',
-  standalone: true,
-  imports: [],
   templateUrl: './element-list.component.html',
-  styleUrl: './element-list.component.css',
+  styleUrls: ['./element-list.component.css'],
 })
 export class ElementListComponent {
   constructor(public elementoService: ElementoService) {}
